@@ -20,11 +20,14 @@ public class Eventi {
     private String titolo;
     private String descrizione;
     private LocalDate data;
-    private String luogo;
-    private int posti;
-    private boolean libero;
+
 
     @OneToMany
     @JoinColumn(name = "utenteId")
     private Utente utente;
+
+    @ManyToOne
+    @JoinColumn(name = "luogoId")
+    private Luogo luogo;
+
 }
