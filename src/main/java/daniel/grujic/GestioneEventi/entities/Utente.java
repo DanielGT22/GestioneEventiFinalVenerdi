@@ -21,7 +21,7 @@ import java.util.UUID;
 @JsonIgnoreProperties({"password", "authorities", "accountNonExpired", "enabled", "accountNonLocked","credentialsNonExpired", "username"})
 public class Utente implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String nome;
     private String cognome;

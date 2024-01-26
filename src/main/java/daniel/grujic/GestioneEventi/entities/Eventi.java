@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.mapping.List;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -15,19 +16,18 @@ import java.util.UUID;
 @Table(name = "evento")
 public class Eventi {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String titolo;
     private String descrizione;
     private LocalDate data;
 
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "utenteId")
     private Utente utente;
 
     @ManyToOne
     @JoinColumn(name = "luogoId")
     private Luogo luogo;
-
 }
