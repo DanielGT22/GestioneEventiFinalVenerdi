@@ -1,6 +1,6 @@
 package daniel.grujic.GestioneEventi.exceptions;
 
-import danielgrujic.gestioneDispositivi.payloads.errors.ErrorsPayloadWithList;
+import daniel.grujic.GestioneEventi.payload.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,11 +19,11 @@ public class ExceptionsHandler {
 
 	@ExceptionHandler(BadRequestException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorsPayloadWithList handleBadRequest(BadRequestException e) {
+	public ErrorResponse handleBadRequest(BadRequestException e) {
 		List<String> errorsMessages = new ArrayList<>();
 		if (e.getErrorsList() != null)
 			errorsMessages = e.getErrorsList().stream().map(err -> err.getDefaultMessage()).toList();
-		return new ErrorsPayloadWithList(e.getMessage(), new Date(), errorsMessages);
+		return new ErrorResponse(e.getMessage(), new Date(), errorsMessages);
 	}
 
 	@ExceptionHandler(NotFoundException.class)

@@ -50,5 +50,4 @@ public class EventiService {
         return eventiRepo.findAll();
     }
 
-
 }
