@@ -1,5 +1,6 @@
 package daniel.grujic.GestioneEventi.payload;
 
-public record Errori() {
+import java.time.LocalDateTime;
 
+public record Errori(String message, LocalDateTime timestamp) {
 }
